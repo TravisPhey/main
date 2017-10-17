@@ -2,7 +2,9 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javax.swing.plaf.synth.Region;
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.layout.Region;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

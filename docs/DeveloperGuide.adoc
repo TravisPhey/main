@@ -729,6 +729,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
+|`* * *` |user |add remarks to a person | store additional information about that person
+
 |`* * *` |user |access the help function |use the address book more efficiently.
 
 |`* *` |user |add multiple contacts at once |save time in adding contacts to address book.
@@ -738,7 +740,6 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user |find a person’s contact details by specifying parameters other than name |person can still be found in event of naming mistake.
 
 |`* *` |user |find a person’s special dates by specifying his name |can prepare something special for him.
-
 
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 

@@ -152,7 +152,7 @@ Deletes the 2nd person in the address book.
 Deletes the 1st person in the results of the `find` command.
 
 // tag::deleteMultipleCommand[]
-=== Delete multiple contacts at once: `deleteMul` (Since v1.2)
+=== Delete multiple contacts at once: `deleteMul`
 
 Deletes multiple specified contacts from addressBook at once. +
 Format: `deleteMul INDEXES`
@@ -246,7 +246,7 @@ Shows a list of all persons in the address book. +
 Format: `list`
 
 // tag::recentlydeleted[]
-=== Recently deleted : `recentlyDel` (Since v1.2)
+=== Recently deleted : `recentlyDel`
 
 Shows recently deleted list of contacts for past 30 contacts. +
 Format: `recentlyDel`
@@ -325,7 +325,7 @@ Format: sort
 // end::sort[]
 
 // tag::theme[]
-=== Changing theme : `theme` (Since v1.5)
+=== Changing theme : `theme`
 
 Changes the colour theme of TheYellowPage from `DarkTheme.css` to `LightTheme.css` and vice versa. +
 

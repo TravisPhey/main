@@ -226,6 +226,31 @@ Returns any person having names `Betsy`, `Tim`, or `John`
 Returns Betsy, Alice, Carl and Daniel.
 // end::FindCommand[]
 
+// tag::findtag[]
+=== Find contacts by tag : `findtag`
+
+Finds persons whose tags contain any of the given keywords. +
+Format: `findtag KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g `Family` will match `family`
+* Only full words will be matched e.g. `friend` will not match `friends`
+* Persons whose tags matching at least one keyword will be returned (i.e. `OR` search).
+* You can mix the parameters together in the same command (Refer to final example below).
+****
+
+Examples:
+
+* `findtag colleague` +
+Returns: +
+`name` John Doe, `tags` colleague
+
+* `findtag colleague friend` +
+Returns: +
+1. `name` John Doe, `tags` colleague +
+2. `name` Jane Doe, `tags` friend
+// end::findtag[]
+
 === Viewing help : `help`
 
 Format: `help`

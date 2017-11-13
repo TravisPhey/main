@@ -115,13 +115,13 @@ Add the list of contacts in contacts.txt into TheYellowPage
 // tag::changePicture[]
 === Change Profile Picture : `changePicture`
 
-Add photos to contact profile in addressBook. +
+Add photos to contact profile in TheYellowPage. +
 Format: `changePicture INDEX PICTURE_PATH`
 
 ****
-* This command changes the profile picture of the cotact at the specified `index`.
-* INDEX refers to the index number shown in the most recent listing.
-* PICTURE_PATH refers to the path to the picture to change to.
+* This command changes the profile picture of the contact at the specified `index`.
+* `INDEX` refers to the index number shown in the most recent listing.
+* `PICTURE_PATH` refers to the path to the picture to change to.
 * The specified picture must be in either .png or . jpg format.
 ****
 // end::changePicture[]

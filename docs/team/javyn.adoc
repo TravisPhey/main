@@ -3,8 +3,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== Project: AddressBook - Level 4
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+== Project: TheYellowPage
+TheYellowPage is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-T10-B4/main/blob/master/collated/main/JavynThun.md] [https://github.com/CS2103AUG2017-T10-B4/main/blob/master/collated/test/JavynThun.md] {give links to collated code files}
 
@@ -13,26 +13,24 @@ AddressBook - Level 4 is a desktop address book application used for teaching So
 ==== External behavior
 
 ---
-#Start of Extract [from: User Guide]#
 
 include::../UserGuide.adoc[tag=remark]
 
-#End of Extract#
 
 ---
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+As admin staffs in companies usually deal with large group of personals, it would be convenient if they could add personal remarks for each of the contacts. For example, they could put remarks such as "owe project progress report" as a reminder for themselves.
 
 ==== Implementation
 
 ---
-#Start of Extract [from: Developer Guide]#
+
 
 include::../DeveloperGuide.adoc[tag=remark]
 
-#End of Extract#
+
 
 ---
 
@@ -41,33 +39,39 @@ include::../DeveloperGuide.adoc[tag=remark]
 ==== External behavior
 
 ---
-#Start of Extract [from: User Guide]#
+
 
 include::../UserGuide.adoc[tag=sort]
 
-#End of Extract#
+
 
 ---
 
 ==== Justification
 
-{Justify the need for, and the current design (i.e. external behavior) of, the feature}
+For admin staff especially in the human resource department, there would usually be a large number of contacts being added at once. Thus, after the large group of contacts is being added with the add multiple contacts feature, the user is then able to properly sort the contacts in TheYellowPage in alphabetical order.
+For example, when the user wants to search for a contact named "Ellie" but is unsure of the spelling of the name but is only sure of the starting alphabet of the name. Thus, the user can just sort and scroll down to names starting with letter E to find individually.
 
 ==== Implementation
 
 ---
-#Start of Extract [from: Developer Guide]#
+
 
 include::../DeveloperGuide.adoc[tag=sort]
 
-#End of Extract#
+
 
 ---
 
 === Other contributions
 
-* Added occupation and website fields to Person (Pull requests https://github.com[#85], https://github.com[#58])
+Added occupation and website fields to Person (Pull requests https://github.com[#85], https://github.com[#58])
 
-== Project: PowerPointLabs
+When a person in the contact list is selected, their website will now be shown instead of their google search page.
 
-{Optionally (not graded), you may include other projects in your portfolio.}
+At the end of the enhancements, a person class will now contain fields inlcuding occupation, website and remark:
+
+image::Person.jpg[width="800"]
+
+Since TheYellowPage is targeted towards office workers, having occupation and website field helps to identify the job position of each contact, along with their personal website such as facebook, linkedin or github.
+

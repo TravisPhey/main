@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Project: AddressBook - Level 4
 AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
-*Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
+*Code contributed*: [https://github.com/CS2103AUG2017-T10-B4/main/blob/master/collated/main/vmlimshimin.md[Functional code]] [https://github.com/CS2103AUG2017-T10-B4/main/blob/master/collated/test/vmlimshimin.md[Test code]]
 
 === 1st Enhancement Added: Recently Deleted
 
@@ -64,11 +64,12 @@ include::../DeveloperGuide.adoc[tag=theme]
 
 ---
 
-=== Enhancement Proposed: Add command `remark`
+=== Enhancement Proposed: Add command `Share`
 
-{Explain similar to the Undo/Redo feature above.}
+`Share` will allow users to create a link that can be copied and sent to others, so that the recipient can receive the contact and see his/her details.
 
 === Other contributions
 
+* Created new theme `LightTheme.css` (Pull requests https://github.com/CS2103AUG2017-T10-B4/main/pull/120[#120])
 * Wrote additional tests to increase coverage from 86% to 87% (Pull requests https://github.com/CS2103AUG2017-T10-B4/main/pull/120[#120])
 

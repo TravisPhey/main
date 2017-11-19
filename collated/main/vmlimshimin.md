@@ -245,29 +245,6 @@ public class RecentlyDeletedQueue {
 
 }
 ```
-###### /java/seedu/address/storage/AddressBookStorage.java
-``` java
-    void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
-
-}
-```
-###### /java/seedu/address/storage/StorageManager.java
-``` java
-    @Override
-    public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath() + "-backup.xml");
-    }
-
-```
-###### /java/seedu/address/storage/XmlAddressBookStorage.java
-``` java
-    @Override
-    public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
-        saveAddressBook(addressBook, filePath + "-backup.xml");
-    }
-
-}
-```
 ###### /resources/view/LightTheme.css
 ``` css
 .background {

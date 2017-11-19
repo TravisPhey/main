@@ -35,7 +35,6 @@ public class SortCommand extends Command {
 ```
 ###### \java\seedu\address\logic\parser\CliSyntax.java
 ``` java
-    public static final Prefix PREFIX_REMARK = new Prefix("r/");
     public static final Prefix PREFIX_WEBSITE = new Prefix("w/");
 ```
 ###### \java\seedu\address\logic\parser\ParserUtil.java

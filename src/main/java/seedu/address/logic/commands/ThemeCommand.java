@@ -16,17 +16,17 @@ public class ThemeCommand extends Command {
     public static final String COMMAND_WORD = "theme";
     public static final String COMMAND_ALIAS = "ct";
 
-    public static final String MESSAGE_SWITCH_THEME_SUCCESS = "Switched Theme";
+    public static final String MESSAGE_THEME_CHANGE_SUCCESS = "Theme Changed";
 
 
     @Override
     public CommandResult execute() {
 
-        String themeToChange = (theme.equals("DarkTheme.css")) ? "LightTheme.css" : "DarkTheme.css";
+        String newTheme = (theme.equals("DarkTheme.css")) ? "LightTheme.css" : "DarkTheme.css";
 
-        EventsCenter.getInstance().post(new ThemeRequestEvent(themeToChange));
+        EventsCenter.getInstance().post(new ThemeRequestEvent(newTheme));
 
-        return new CommandResult(String.format(MESSAGE_SWITCH_THEME_SUCCESS, themeToChange));
+        return new CommandResult(String.format(MESSAGE_THEME_CHANGE_SUCCESS, newTheme));
 
     }
 

@@ -1,4 +1,28 @@
 # vmlimshimin
+###### /java/seedu/address/commons/events/ui/ThemeRequestEvent.java
+``` java
+package seedu.address.commons.events.ui;
+
+import seedu.address.commons.events.BaseEvent;
+
+/**
+ * Indicates a request to change the theme.
+ */
+public class ThemeRequestEvent extends BaseEvent {
+
+    public final String theme;
+
+    public ThemeRequestEvent(String theme) {
+        this.theme = theme;
+    }
+
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+}
+```
 ###### /java/seedu/address/logic/commands/DeleteCommand.java
 ``` java
             queue.offer(personToDelete);
@@ -96,22 +120,23 @@ public class ThemeCommand extends Command {
     public static final String COMMAND_WORD = "theme";
     public static final String COMMAND_ALIAS = "ct";
 
-    public static final String MESSAGE_THEME_CHANGE_SUCCESS = "Theme Changed";
+    public static final String MESSAGE_SWITCH_THEME_SUCCESS = "Switched Theme";
 
 
     @Override
     public CommandResult execute() {
 
-        String newTheme = (theme.equals("DarkTheme.css")) ? "LightTheme.css" : "DarkTheme.css";
+        String themeToChange = (theme == "DarkTheme.css") ? "LightTheme.css" : "DarkTheme.css";
 
-        EventsCenter.getInstance().post(new ThemeRequestEvent(newTheme));
+        EventsCenter.getInstance().post(new ThemeRequestEvent(themeToChange));
 
-        return new CommandResult(String.format(MESSAGE_THEME_CHANGE_SUCCESS, newTheme));
+        theme = themeToChange;
+
+        return new CommandResult(String.format(MESSAGE_SWITCH_THEME_SUCCESS, themeToChange));
 
     }
 
 
-    @Override
     public void setData(Model model, CommandHistory history, UndoRedoStack undoRedoStack,
                         RecentlyDeletedQueue queue, String theme) {
         this.theme = theme;
@@ -159,7 +184,7 @@ public class ThemeCommand extends Command {
 ###### /java/seedu/address/logic/LogicManager.java
 ``` java
     private final RecentlyDeletedQueue queue;
-    private String theme;
+    private final String theme;
 
 ```
 ###### /java/seedu/address/logic/LogicManager.java
@@ -172,14 +197,6 @@ public class ThemeCommand extends Command {
 ###### /java/seedu/address/logic/LogicManager.java
 ``` java
             command.setData(model, history, undoRedoStack, queue, theme);
-            if (commandText.equals("theme")) {
-                String oldTheme = theme;
-                if (oldTheme.equals("DarkTheme.css")) {
-                    theme = "LightTheme.css";
-                } else {
-                    theme = "DarkTheme.css";
-                }
-            }
 ```
 ###### /java/seedu/address/logic/parser/AddressBookParser.java
 ``` java
@@ -243,6 +260,67 @@ public class RecentlyDeletedQueue {
         recentlyDeletedQueue = newQueue;
     }
 
+}
+```
+###### /java/seedu/address/model/AddressBook.java
+``` java
+    /**
+     * Initialises the themes in this {@code AddressBook}.
+     */
+
+    private void initialiseThemes() {
+        themeList.add("DarkTheme.css");
+        themeList.add("LightTheme.css");
+    }
+
+    public ArrayList<String> getThemesList() {
+        return themeList;
+    }
+
+```
+###### /java/seedu/address/storage/AddressBookStorage.java
+``` java
+    void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
+
+}
+```
+###### /java/seedu/address/storage/StorageManager.java
+``` java
+    @Override
+    public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
+        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath() + "-backup.xml");
+    }
+
+```
+###### /java/seedu/address/storage/XmlAddressBookStorage.java
+``` java
+    @Override
+    public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
+        saveAddressBook(addressBook, filePath + "-backup.xml");
+    }
+
+}
+```
+###### /java/seedu/address/ui/MainWindow.java
+``` java
+    /**
+     * Selects the theme given by user input
+     */
+    public void handleSelectTheme(String theme) {
+        if (getRoot().getStylesheets().size() > 1) {
+            getRoot().getStylesheets().remove(CURRENT_THEME);
+        }
+        getRoot().getStylesheets().add("/view/" + theme);
+    }
+
+```
+###### /java/seedu/address/ui/MainWindow.java
+``` java
+    @Subscribe
+    private void handleSelectThemeEvent(ThemeRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleSelectTheme(event.theme);
+    }
 }
 ```
 ###### /resources/view/LightTheme.css

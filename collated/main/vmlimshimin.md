@@ -1,5 +1,5 @@
 # vmlimshimin
-###### /java/seedu/address/commons/events/ui/ThemeRequestEvent.java
+###### \java\seedu\address\commons\events\ui\ThemeRequestEvent.java
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -23,11 +23,11 @@ public class ThemeRequestEvent extends BaseEvent {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/DeleteCommand.java
+###### \java\seedu\address\logic\commands\DeleteCommand.java
 ``` java
             queue.offer(personToDelete);
 ```
-###### /java/seedu/address/logic/commands/DeleteCommand.java
+###### \java\seedu\address\logic\commands\DeleteCommand.java
 ``` java
     @Override
     public void setData(Model model, CommandHistory commandHistory,
@@ -37,11 +37,11 @@ public class ThemeRequestEvent extends BaseEvent {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/DeleteMultipleCommand.java
+###### \java\seedu\address\logic\commands\DeleteMultipleCommand.java
 ``` java
                 queue.offer(personToDelete);
 ```
-###### /java/seedu/address/logic/commands/DeleteMultipleCommand.java
+###### \java\seedu\address\logic\commands\DeleteMultipleCommand.java
 ``` java
     @Override
     public void setData(Model model, CommandHistory commandHistory,
@@ -51,7 +51,7 @@ public class ThemeRequestEvent extends BaseEvent {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/RecentlyDeletedCommand.java
+###### \java\seedu\address\logic\commands\RecentlyDeletedCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -101,7 +101,7 @@ public class RecentlyDeletedCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/ThemeCommand.java
+###### \java\seedu\address\logic\commands\ThemeCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -126,24 +126,23 @@ public class ThemeCommand extends Command {
     @Override
     public CommandResult execute() {
 
-        String themeToChange = (theme == "DarkTheme.css") ? "LightTheme.css" : "DarkTheme.css";
+        String themeToChange = (theme.equals("DarkTheme.css")) ? "LightTheme.css" : "DarkTheme.css";
 
         EventsCenter.getInstance().post(new ThemeRequestEvent(themeToChange));
-
-        theme = themeToChange;
 
         return new CommandResult(String.format(MESSAGE_SWITCH_THEME_SUCCESS, themeToChange));
 
     }
 
 
+    @Override
     public void setData(Model model, CommandHistory history, UndoRedoStack undoRedoStack,
                         RecentlyDeletedQueue queue, String theme) {
         this.theme = theme;
     }
 }
 ```
-###### /java/seedu/address/logic/commands/UndoableCommand.java
+###### \java\seedu\address\logic\commands\UndoableCommand.java
 ``` java
     /**
      * Stores the current state of {@code model#addressBook}.
@@ -155,7 +154,7 @@ public class ThemeCommand extends Command {
     }
 
 ```
-###### /java/seedu/address/logic/commands/UndoableCommand.java
+###### \java\seedu\address\logic\commands\UndoableCommand.java
 ``` java
     /**
      * Reverts the AddressBook to the state before this command
@@ -170,7 +169,7 @@ public class ThemeCommand extends Command {
     }
 
 ```
-###### /java/seedu/address/logic/commands/UndoCommand.java
+###### \java\seedu\address\logic\commands\UndoCommand.java
 ``` java
     @Override
     public void setData(Model model, CommandHistory commandHistory,
@@ -181,24 +180,32 @@ public class ThemeCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/logic/LogicManager.java
+###### \java\seedu\address\logic\LogicManager.java
 ``` java
     private final RecentlyDeletedQueue queue;
-    private final String theme;
+    private String theme;
 
 ```
-###### /java/seedu/address/logic/LogicManager.java
+###### \java\seedu\address\logic\LogicManager.java
 ``` java
         this.queue = new RecentlyDeletedQueue();
         this.theme = "DarkTheme.css";
     }
 
 ```
-###### /java/seedu/address/logic/LogicManager.java
+###### \java\seedu\address\logic\LogicManager.java
 ``` java
             command.setData(model, history, undoRedoStack, queue, theme);
+            if (commandText.equals("theme")) {
+                String newTheme = theme;
+                if (newTheme.equals("DarkTheme.css")) {
+                    theme = "LightTheme.css";
+                } else {
+                    theme = "DarkTheme.css";
+                }
+            }
 ```
-###### /java/seedu/address/logic/parser/AddressBookParser.java
+###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
         case RecentlyDeletedCommand.COMMAND_WORD:
         case RecentlyDeletedCommand.COMMAND_ALIAS:
@@ -208,7 +215,7 @@ public class ThemeCommand extends Command {
         case ThemeCommand.COMMAND_ALIAS:
             return new ThemeCommand();
 ```
-###### /java/seedu/address/logic/RecentlyDeletedQueue.java
+###### \java\seedu\address\logic\RecentlyDeletedQueue.java
 ``` java
 package seedu.address.logic;
 
@@ -262,7 +269,7 @@ public class RecentlyDeletedQueue {
 
 }
 ```
-###### /java/seedu/address/model/AddressBook.java
+###### \java\seedu\address\model\AddressBook.java
 ``` java
     /**
      * Initialises the themes in this {@code AddressBook}.
@@ -278,13 +285,13 @@ public class RecentlyDeletedQueue {
     }
 
 ```
-###### /java/seedu/address/storage/AddressBookStorage.java
+###### \java\seedu\address\storage\AddressBookStorage.java
 ``` java
     void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
 
 }
 ```
-###### /java/seedu/address/storage/StorageManager.java
+###### \java\seedu\address\storage\StorageManager.java
 ``` java
     @Override
     public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
@@ -292,7 +299,7 @@ public class RecentlyDeletedQueue {
     }
 
 ```
-###### /java/seedu/address/storage/XmlAddressBookStorage.java
+###### \java\seedu\address\storage\XmlAddressBookStorage.java
 ``` java
     @Override
     public void backupAddressBook(ReadOnlyAddressBook addressBook) throws IOException {
@@ -301,7 +308,7 @@ public class RecentlyDeletedQueue {
 
 }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     /**
      * Selects the theme given by user input
@@ -314,7 +321,7 @@ public class RecentlyDeletedQueue {
     }
 
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     @Subscribe
     private void handleSelectThemeEvent(ThemeRequestEvent event) {
@@ -323,7 +330,7 @@ public class RecentlyDeletedQueue {
     }
 }
 ```
-###### /resources/view/LightTheme.css
+###### \resources\view\LightTheme.css
 ``` css
 .background {
     -fx-background-color: derive(#FFD88B, 20%);
